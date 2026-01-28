@@ -843,6 +843,976 @@ For a 24/7 AI assistant that manages your email, calendar, smart home, code, and
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
   },
+  {
+    slug: 'build-ai-agent-that-works-24-7',
+    title: 'How to Build an AI Agent That Works 24/7 — The Complete Guide (2026)',
+    description: 'Learn how to build and deploy an always-on AI agent using Clawdbot. From architecture to automation, this guide covers everything.',
+    metaDescription: 'Step-by-step guide to building a 24/7 AI agent with Clawdbot. Architecture, deployment, monitoring, and real-world automation examples.',
+    category: 'advanced',
+    tags: ['ai-agent', '24/7', 'automation', 'deployment', 'always-on'],
+    publishDate: '2026-01-29',
+    lastModified: '2026-01-29',
+    author: 'Manas AI',
+    faqs: [
+      {
+        question: 'What does it mean to have an AI agent that works 24/7?',
+        answer: 'A 24/7 AI agent is software that runs continuously on a dedicated machine — like a Mac mini or Linux server — performing tasks autonomously without human input. Unlike ChatGPT, which only responds when you open a browser tab, a 24/7 agent monitors your inbox, calendar, smart home, code deployments, and more around the clock, taking action proactively via cron jobs and heartbeat checks.',
+      },
+      {
+        question: 'How do I keep my AI agent running without interruption?',
+        answer: 'Use a launchd daemon (macOS) or systemd service (Linux) to ensure your agent restarts automatically after crashes or reboots. Configure power management to prevent sleep, enable auto-restart on power failure, and set up monitoring alerts so you know immediately if the agent goes down. Clawdbot handles all of this with its built-in daemon installer.',
+      },
+      {
+        question: 'What hardware do I need for a 24/7 AI agent?',
+        answer: 'A Mac mini M2 or newer is ideal — low power draw (15-30W), silent operation, and macOS compatibility. A Linux VPS or dedicated server also works. You need reliable internet, a Claude Max subscription ($100/month) for the LLM backend, and at least 8GB of RAM.',
+      },
+      {
+        question: 'How much does it cost to run a 24/7 AI agent?',
+        answer: 'Running a 24/7 AI agent with Clawdbot costs roughly $135 per month: $100 for Claude Max, ~$30 amortized hardware, and ~$5 electricity. This gives you an always-on assistant that handles email, scheduling, monitoring, automation, and more — significantly cheaper than hiring a human assistant.',
+      },
+      {
+        question: 'Can a 24/7 AI agent handle tasks while I sleep?',
+        answer: 'Yes. That is one of the primary benefits. You can configure your agent to check email overnight, respond to urgent messages, monitor server health, process data feeds, and queue summaries for your morning briefing. Clawdbot supports cron jobs and heartbeats specifically for this purpose.',
+      },
+    ],
+    content: `
+Building an AI agent that works 24/7 is the ultimate productivity unlock. Instead of opening ChatGPT when you remember to, you deploy an autonomous assistant that monitors, decides, and acts around the clock. This guide walks you through the architecture, tools, and deployment strategies to build a truly always-on AI agent using Clawdbot.
+
+## Why 24/7 Matters
+
+Most people interact with AI in sessions — you open a tab, ask a question, close the tab. That's like hiring an employee who only works when you're standing over their shoulder.
+
+A 24/7 AI agent flips the model. It works while you sleep. It checks your email at 3 AM. It monitors your servers on weekends. It drafts responses to customer inquiries within minutes, not hours. The compounding value of an always-on agent is enormous.
+
+## The Architecture of an Always-On Agent
+
+A production-grade 24/7 AI agent has four layers:
+
+### 1. The Runtime Layer
+This is the software that keeps your agent alive. Clawdbot uses a **gateway daemon** that:
+- Starts on boot via launchd (macOS) or systemd (Linux)
+- Automatically restarts after crashes
+- Manages connections to messaging channels
+- Handles LLM provider routing and failover
+
+\`\`\`bash
+# Install the daemon
+clawdbot onboard --install-daemon
+
+# Check status anytime
+clawdbot gateway status
+\`\`\`
+
+### 2. The Intelligence Layer
+This is the LLM that powers your agent's reasoning. For 24/7 operation, you need:
+- **Reliable API access** — Claude Max ($100/month) provides unlimited Sonnet and generous Opus quotas
+- **Model fallback** — configure secondary models in case the primary is rate-limited
+- **Thinking levels** — use low thinking for routine checks, high thinking for complex decisions
+
+### 3. The Communication Layer
+Your agent needs channels to receive instructions and deliver results:
+- **Telegram** — best for mobile-first interaction, fast setup
+- **Discord** — ideal for team environments and shared agents
+- **WhatsApp** — familiar interface, end-to-end encryption
+- **Slack** — enterprise-ready with rich integrations
+- **Email** — the agent monitors your inbox directly
+
+### 4. The Automation Layer
+This is where the magic happens. Two key mechanisms:
+
+**Heartbeats** — periodic check-ins (every 15-60 minutes) where the agent reviews a checklist:
+\`\`\`markdown
+<!-- HEARTBEAT.md -->
+- Check email for urgent messages
+- Review calendar for upcoming events (next 2 hours)
+- Check GitHub notifications
+- Monitor server uptime dashboard
+\`\`\`
+
+**Cron Jobs** — scheduled tasks at exact times:
+\`\`\`yaml
+cron:
+  - schedule: "0 7 * * *"
+    task: "Morning briefing: weather, calendar, top emails"
+  - schedule: "0 22 * * *"
+    task: "End-of-day summary: what happened today"
+  - schedule: "*/30 * * * *"
+    task: "Check for urgent customer support tickets"
+\`\`\`
+
+## Step-by-Step: Building Your 24/7 Agent
+
+### Step 1: Choose Your Hardware
+A **Mac mini M4** is the gold standard — silent, efficient, and always-on. Alternatively, use any Linux server or VPS with at least 4GB RAM. The agent itself is lightweight; the LLM runs in the cloud.
+
+### Step 2: Install and Configure Clawdbot
+\`\`\`bash
+npm install -g clawdbot@latest
+clawdbot onboard --install-daemon
+\`\`\`
+
+Follow the setup wizard to configure your LLM provider, messaging channel, and persona files.
+
+### Step 3: Define Your Agent's Personality
+Edit **SOUL.md** to define behavior boundaries:
+- What the agent should do proactively vs. only when asked
+- Tone and communication style
+- Safety guardrails (e.g., never send money, always confirm before posting publicly)
+
+### Step 4: Set Up Proactive Behaviors
+Create **HEARTBEAT.md** with a rotating checklist. Configure cron jobs for time-sensitive tasks. Start conservative — a few checks per day — and expand as you build trust.
+
+### Step 5: Build the Memory System
+Your agent needs persistent context:
+- **MEMORY.md** — curated long-term knowledge (preferences, relationships, ongoing projects)
+- **USER.md** — facts about you (timezone, job, communication preferences)
+- **Daily logs** — memory/YYYY-MM-DD.md files for granular recall
+
+### Step 6: Add Skills and Integrations
+Install skills that connect your agent to the real world:
+\`\`\`bash
+clawdhub install gmail
+clawdhub install calendar
+clawdhub install github
+clawdhub install weather
+clawdhub install smart-home
+\`\`\`
+
+### Step 7: Monitor and Iterate
+A 24/7 agent is a living system. Review logs regularly:
+\`\`\`bash
+clawdbot gateway logs --tail 100
+\`\`\`
+
+Check what your agent did overnight. Adjust heartbeat frequency. Refine SOUL.md boundaries. The first week is calibration — after that, it runs itself.
+
+## Real-World 24/7 Agent Workflows
+
+Here are workflows that real Clawdbot users have deployed:
+
+- **Morning Briefing Agent** — every day at 7 AM, delivers weather, calendar, top emails, and news
+- **Customer Support Monitor** — checks support inbox every 30 minutes, drafts responses, flags urgent issues
+- **Code Deployment Watcher** — monitors CI/CD pipelines, alerts on failures, can auto-rollback
+- **Social Media Manager** — posts scheduled content, monitors mentions, drafts replies
+- **Smart Home Controller** — adjusts lights and thermostat based on time, weather, and calendar
+
+## Common Pitfalls
+
+1. **Over-automation too early** — start with read-only tasks before giving write access
+2. **No safety rails** — always set boundaries in SOUL.md for financial, public, and destructive actions
+3. **Ignoring logs** — review what your agent does daily for the first week
+4. **Poor memory hygiene** — curate MEMORY.md regularly; stale context leads to bad decisions
+
+## The Bottom Line
+
+Building a 24/7 AI agent isn't science fiction — it's a weekend project. With Clawdbot, a Mac mini, and Claude Max, you can deploy an always-on assistant that handles the tedious parts of your life while you focus on what matters. Start small, iterate fast, and let the agent earn your trust.
+
+*Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
+    `,
+  },
+  {
+    slug: 'clawdbot-vs-autogpt-vs-babyagi',
+    title: 'Clawdbot vs AutoGPT vs BabyAGI: Which AI Agent Framework Wins in 2026?',
+    description: 'Head-to-head comparison of the top AI agent frameworks. Clawdbot, AutoGPT, and BabyAGI compared on reliability, features, and real-world usefulness.',
+    metaDescription: 'Clawdbot vs AutoGPT vs BabyAGI comparison for 2026. See which AI agent framework is most reliable, practical, and feature-rich for real-world automation.',
+    category: 'comparison',
+    tags: ['comparison', 'autogpt', 'babyagi', 'ai-agent', 'framework'],
+    publishDate: '2026-01-29',
+    lastModified: '2026-01-29',
+    author: 'Manas AI',
+    faqs: [
+      {
+        question: 'What is the best AI agent framework in 2026?',
+        answer: 'Clawdbot (Moltbot) is the best AI agent framework for personal productivity in 2026. Unlike AutoGPT and BabyAGI, which were experimental proof-of-concepts from 2023, Clawdbot is a production-grade system with 50+ integrations, persistent memory, messaging app support, and reliable 24/7 operation. AutoGPT is better for open-ended research tasks, while BabyAGI is primarily an academic reference.',
+      },
+      {
+        question: 'Is AutoGPT still relevant in 2026?',
+        answer: 'AutoGPT has evolved significantly since its 2023 launch but still struggles with reliability for production use. It excels at open-ended research and exploration tasks but lacks the messaging app integration, persistent memory system, and 24/7 daemon architecture that make Clawdbot practical for daily use as a personal assistant.',
+      },
+      {
+        question: 'What happened to BabyAGI?',
+        answer: 'BabyAGI was a minimalist AI agent experiment created by Yohei Nakajima in 2023. It demonstrated autonomous task management using LLMs but was never designed for production use. In 2026, it remains an influential academic reference but is not actively maintained as a consumer product. Most of its ideas have been absorbed into more complete frameworks like Clawdbot.',
+      },
+      {
+        question: 'Can I use Clawdbot and AutoGPT together?',
+        answer: 'Yes. Some advanced users run AutoGPT as a sub-agent within Clawdbot for specific research tasks. Clawdbot handles the daily assistant duties (email, calendar, messaging) while AutoGPT tackles long-running research projects. However, most users find Clawdbot sufficient for all their needs.',
+      },
+    ],
+    content: `
+The AI agent space has exploded since 2023, but three names dominate the conversation: Clawdbot (Moltbot), AutoGPT, and BabyAGI. Each took a radically different approach to autonomous AI, and by 2026, the results are clear. This guide breaks down exactly where each framework stands, what it's best at, and which one you should use.
+
+## The Quick Verdict
+
+- **Clawdbot** — Best for personal productivity and daily use. Production-grade, reliable, extensible.
+- **AutoGPT** — Best for autonomous research and exploration. Powerful but unpredictable.
+- **BabyAGI** — Best as a learning tool and academic reference. Not actively maintained for consumers.
+
+## Head-to-Head Comparison
+
+### Reliability
+
+**Clawdbot: 9/10** — Runs as a managed daemon with auto-restart, crash recovery, and clean session management. Users report weeks of uninterrupted uptime. The gateway architecture ensures stability even when individual tasks fail.
+
+**AutoGPT: 5/10** — Improved dramatically since 2023 but still prone to loops, hallucinated tool calls, and runaway token consumption. Requires babysitting for important tasks. The autonomous goal-chasing architecture means it sometimes wanders off-track.
+
+**BabyAGI: 3/10** — A proof-of-concept that was never hardened for production. Task queues can spiral, and there is no built-in error recovery or session management.
+
+### Real-World Integrations
+
+**Clawdbot: 50+ skills** — Gmail, Calendar, GitHub, smart home (HomeKit, Home Assistant), Telegram, WhatsApp, Discord, Slack, browser automation, voice (ElevenLabs), image generation, web search, file management, and more. New skills are published on ClawdHub regularly.
+
+**AutoGPT: 15-20 plugins** — Web browsing, code execution, file operations, and select API integrations. The plugin ecosystem exists but is smaller and less polished. Many community plugins are unmaintained.
+
+**BabyAGI: Minimal** — Primarily LLM reasoning and task list management. Integrations require custom development.
+
+### Communication Channels
+
+**Clawdbot: Telegram, WhatsApp, Discord, Slack, webchat** — Message your AI from any device, any app. This is a killer feature — your agent is reachable from your phone at all times.
+
+**AutoGPT: Web UI / CLI** — Interact through a web dashboard or terminal. No native messaging app integration.
+
+**BabyAGI: CLI only** — Terminal-based interaction. No built-in chat or messaging support.
+
+### Memory and Persistence
+
+**Clawdbot: File-based persistent memory** — MEMORY.md for long-term knowledge, daily markdown logs, SOUL.md for personality, USER.md for personal context. Memory survives reboots, updates, and even machine migrations. Simple, transparent, human-readable.
+
+**AutoGPT: Vector database memory** — Uses embeddings and vector stores (Pinecone, ChromaDB) for memory retrieval. More sophisticated in theory but harder to inspect, debug, and curate. Memory quality degrades over time without maintenance.
+
+**BabyAGI: In-memory task lists** — No persistent memory system. State is lost between runs unless you add custom persistence.
+
+### Proactive Behaviors
+
+**Clawdbot: Heartbeats + cron jobs** — Schedule periodic check-ins and exact-time tasks. Your agent can check email every 30 minutes, deliver a morning briefing at 7 AM, and monitor deployments overnight — all without prompting.
+
+**AutoGPT: Continuous mode** — Can run autonomously toward a goal, but this is a one-shot process, not a scheduled system. No built-in recurring task support.
+
+**BabyAGI: Task loop** — Runs a continuous task generation loop but without scheduling, timing, or real-world triggers.
+
+### Cost
+
+**Clawdbot: ~$135/month** — Claude Max ($100) + hardware amortized ($30) + electricity ($5). Unlimited Sonnet usage means no per-token surprises.
+
+**AutoGPT: Variable, $50-$500+/month** — Uses OpenAI API with per-token billing. Autonomous mode can burn through tokens quickly. A complex research task might cost $20-$50 in API calls alone. Costs are unpredictable.
+
+**BabyAGI: Variable, $20-$200+/month** — Similar token-based pricing through OpenAI. Task loop spirals can cause unexpected costs.
+
+### Setup Difficulty
+
+**Clawdbot: Medium** — Interactive setup wizard handles most configuration. Requires basic terminal comfort. Fully operational in 30 minutes.
+
+**AutoGPT: Medium-High** — Docker-based setup, API key configuration, plugin installation. Expect 1-2 hours for a complete setup with all features.
+
+**BabyAGI: High** — Requires Python environment, API keys, and potentially vector database setup. Meant for developers comfortable with code.
+
+## When to Choose Each Framework
+
+### Choose Clawdbot When:
+- You want a **daily-driver AI assistant** that's always available
+- You need **messaging app access** (Telegram, WhatsApp, Discord)
+- **Reliability** matters more than autonomy
+- You want **proactive scheduling** (heartbeats, cron)
+- You prefer **transparent memory** you can read and edit
+- You want a growing **skill ecosystem** with plug-and-play integrations
+
+### Choose AutoGPT When:
+- You need **deep autonomous research** — multi-step investigation with minimal guidance
+- You're comfortable with **unpredictable costs** and occasional failures
+- You want the agent to **figure out the plan itself** rather than follow your instructions
+- You're building a **custom AI research tool** and want maximum flexibility
+
+### Choose BabyAGI When:
+- You're **learning about AI agents** and want to understand the fundamentals
+- You want a **minimal codebase** to study and extend
+- You're building a **custom framework** and want BabyAGI as a starting point
+- You're doing **academic research** on autonomous AI task management
+
+## The Evolution of AI Agents (2023-2026)
+
+In 2023, AutoGPT and BabyAGI captured the world's imagination by showing that LLMs could do more than chat — they could plan, execute, and iterate. But they were prototypes. They looped endlessly, burned through API credits, and rarely completed complex tasks reliably.
+
+Clawdbot took a different philosophy: **practical agency over theoretical autonomy.** Instead of trying to solve arbitrary goals, it focused on being the best possible personal assistant — reliable, always-on, deeply integrated with the tools people actually use.
+
+By 2026, that pragmatic approach won. Clawdbot has tens of thousands of active users running it daily. AutoGPT remains impressive for research use cases. BabyAGI is a respected ancestor.
+
+## Conclusion
+
+If you want an AI agent that actually improves your daily life — one you can message from your phone, that checks your email, manages your calendar, and runs 24/7 without babysitting — **Clawdbot is the clear winner in 2026.** AutoGPT is a powerful tool for specific research needs, and BabyAGI is a great learning resource, but neither matches Clawdbot's combination of reliability, integrations, and everyday usefulness.
+
+*Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
+    `,
+  },
+  {
+    slug: 'automate-business-with-claude-code',
+    title: 'How to Automate Your Business with Claude Code and Clawdbot (2026)',
+    description: 'Practical guide to automating business processes with Claude Code and Clawdbot. Email, customer support, invoicing, reporting, and more.',
+    metaDescription: 'Automate your business with Claude Code and Clawdbot. Step-by-step guide to AI-powered email management, customer support, invoicing, and reporting.',
+    category: 'business',
+    tags: ['business', 'automation', 'claude-code', 'productivity', 'workflow'],
+    publishDate: '2026-01-29',
+    lastModified: '2026-01-29',
+    author: 'Manas AI',
+    faqs: [
+      {
+        question: 'What is Claude Code?',
+        answer: 'Claude Code is Anthropic\'s official CLI tool for Claude that gives the AI model direct access to your terminal, file system, and development tools. When combined with Clawdbot, Claude Code becomes the execution engine for an always-on business automation system — writing scripts, managing files, executing commands, and building integrations on demand.',
+      },
+      {
+        question: 'What business processes can I automate with Clawdbot?',
+        answer: 'You can automate email triage and response drafting, customer support ticket routing, invoice generation and tracking, daily/weekly business reports, social media management, lead qualification, meeting scheduling, data entry and CRM updates, competitor monitoring, and content creation. Most businesses start with email automation and expand from there.',
+      },
+      {
+        question: 'How much time can business automation with Clawdbot save?',
+        answer: 'Early adopters report saving 10-20 hours per week by automating email management, scheduling, reporting, and routine customer communications. A solopreneur or small business owner can effectively add a half-time virtual assistant for $135/month instead of $2,000-$4,000/month for a human equivalent.',
+      },
+      {
+        question: 'Is Clawdbot secure enough for business use?',
+        answer: 'Yes, when properly configured. Clawdbot runs locally on your machine, so sensitive business data never leaves your network unless sent to an LLM provider. Configure authorized users, keep API keys in environment variables, set strict SOUL.md boundaries for financial actions, and review logs regularly. Many small businesses and freelancers use Clawdbot for daily operations.',
+      },
+    ],
+    content: `
+Business automation with AI used to require expensive enterprise software, custom development teams, and months of implementation. In 2026, a solopreneur with a Mac mini, Clawdbot, and Claude Code can automate most of their business operations in a weekend. This guide shows you exactly how.
+
+## What Makes This Different
+
+Traditional automation tools like Zapier or Make connect apps with simple triggers and actions. They're powerful but rigid — you define exact workflows, and they execute them mechanically.
+
+Clawdbot with Claude Code is fundamentally different. It **understands context**. When a customer email arrives, it doesn't just forward it to a folder — it reads the email, understands the customer's issue, checks your knowledge base, drafts an appropriate response, and flags anything that needs your personal attention. It thinks, then acts.
+
+## The Business Automation Stack
+
+Here's what you need:
+
+- **Clawdbot** — the always-on AI agent framework
+- **Claude Code** — the execution engine for terminal and file operations
+- **Claude Max** ($100/month) — unlimited LLM access
+- **Gmail/Calendar skills** — email and scheduling integration
+- **Mac mini or server** — 24/7 operation
+
+Total cost: ~$135/month. Compare that to a virtual assistant at $2,000-$4,000/month.
+
+## Automation #1: Email Triage and Response
+
+The highest-ROI automation for most businesses. Here's how to set it up:
+
+### Configure Email Monitoring
+Install the Gmail skill and set up a heartbeat check:
+
+\`\`\`markdown
+<!-- HEARTBEAT.md -->
+- Check email inbox for new messages
+- Categorize: urgent, needs-response, FYI, spam
+- Draft responses for routine inquiries
+- Flag urgent items and notify me via Telegram
+\`\`\`
+
+### Define Response Templates in SOUL.md
+\`\`\`markdown
+When responding to business emails:
+- Professional but warm tone
+- Reference the customer by name
+- Address their specific question
+- Include a clear next step
+- Never promise timelines without checking with me
+- Always draft — never auto-send without my review (for now)
+\`\`\`
+
+### The Result
+Every 30 minutes, your AI checks your inbox. Routine inquiries get draft responses queued for your review. Urgent messages trigger an immediate Telegram notification. Spam gets archived. You wake up to a sorted inbox with pre-drafted replies.
+
+## Automation #2: Customer Support
+
+For businesses with recurring customer questions:
+
+1. **Create a knowledge base** — a markdown file with common questions and answers
+2. **Configure the agent** to check support channels (email, Discord, or a web form)
+3. **Set response boundaries** — what it can answer directly vs. what needs escalation
+
+\`\`\`markdown
+<!-- SUPPORT-RULES.md -->
+You can answer directly:
+- Pricing questions (refer to pricing page)
+- Feature questions (refer to documentation)
+- Account setup help (walk through steps)
+
+Escalate to me:
+- Refund requests
+- Bug reports
+- Partnership inquiries
+- Anything involving money or legal
+\`\`\`
+
+## Automation #3: Daily Business Reports
+
+Schedule a morning briefing that aggregates key business metrics:
+
+\`\`\`yaml
+cron:
+  - schedule: "0 7 * * 1-5"  # 7 AM weekdays
+    task: |
+      Generate my morning business briefing:
+      1. Unread emails summary (count, urgent items)
+      2. Today's calendar events
+      3. Any GitHub issues or PRs needing attention
+      4. Revenue dashboard snapshot (check Stripe)
+      5. Social media mentions overnight
+      Deliver via Telegram.
+\`\`\`
+
+## Automation #4: Invoice and Payment Tracking
+
+Use Claude Code to build and maintain a simple invoicing system:
+
+- Track outstanding invoices in a markdown or spreadsheet file
+- Send payment reminders on schedule
+- Log payments when received
+- Generate monthly revenue reports
+
+The AI maintains the system and you approve actions through Telegram.
+
+## Automation #5: Content Creation Pipeline
+
+For businesses that rely on content marketing:
+
+1. **Research phase** — the agent monitors competitors, industry news, and trending topics
+2. **Drafting phase** — generates blog posts, social media content, or email newsletters
+3. **Review phase** — sends drafts to you via Telegram for approval
+4. **Publishing phase** — posts approved content to your platforms
+
+\`\`\`yaml
+cron:
+  - schedule: "0 9 * * 1"  # Monday 9 AM
+    task: |
+      Research trending topics in [your industry].
+      Draft 3 blog post outlines and 5 social media posts.
+      Save to ~/content/drafts/ and notify me.
+\`\`\`
+
+## Automation #6: Meeting Prep and Follow-Up
+
+Before every meeting, your agent can:
+- Review the attendee's recent emails and communication history
+- Summarize the meeting topic and any open items
+- Prepare talking points and questions
+- Deliver a briefing document 30 minutes before the meeting
+
+After the meeting:
+- Process any notes you dictate via voice message
+- Draft follow-up emails to attendees
+- Create action items and add them to your task list
+
+## Getting Started: The 80/20 Approach
+
+Don't try to automate everything at once. Here's the fastest path to value:
+
+**Week 1:** Set up email triage. This alone saves 5-10 hours per week.
+
+**Week 2:** Add daily briefings and calendar management.
+
+**Week 3:** Implement customer support automation for your most common inquiries.
+
+**Week 4:** Build out content creation or reporting workflows based on your business needs.
+
+## Security Considerations for Business Use
+
+- **Never auto-send** emails or messages without review until you've built trust in the system
+- **Set financial guardrails** — the agent should never initiate payments or transfers without explicit approval
+- **Review logs weekly** — check what your agent has been doing
+- **Use separate accounts** where possible — a dedicated email for the agent to manage
+- **Keep secrets secure** — API keys in environment variables, not in files
+
+## ROI Calculation
+
+For a typical small business owner or freelancer:
+
+| Task | Hours/Week Saved | Value (at $50/hr) |
+|------|------------------|--------------------|
+| Email management | 5-8 hours | $250-$400 |
+| Meeting prep/follow-up | 2-3 hours | $100-$150 |
+| Reporting | 2-4 hours | $100-$200 |
+| Customer support | 3-5 hours | $150-$250 |
+| Content creation | 3-5 hours | $150-$250 |
+| **Total** | **15-25 hours** | **$750-$1,250/week** |
+
+Cost: $135/month. ROI: 20-40x in the first month.
+
+## Conclusion
+
+The era of AI-powered business automation is here, and it's accessible to everyone — not just enterprises with six-figure software budgets. With Clawdbot, Claude Code, and a $135/month investment, you can build an AI-powered business operation that rivals companies ten times your size. Start with email. Expand from there. The leverage is extraordinary.
+
+*Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
+    `,
+  },
+  {
+    slug: 'best-ai-agent-skills-plugins-2026',
+    title: 'Best AI Agent Skills and Plugins in 2026 — The Ultimate Clawdbot Skill Guide',
+    description: 'Complete guide to the best Clawdbot skills and plugins. From email to smart home to voice, discover the top integrations for your AI agent.',
+    metaDescription: 'Discover the best Clawdbot skills and plugins for 2026. Top-rated integrations for email, calendar, smart home, voice, coding, and business automation.',
+    category: 'skills',
+    tags: ['skills', 'plugins', 'integrations', 'clawdhub', 'tools'],
+    publishDate: '2026-01-29',
+    lastModified: '2026-01-29',
+    author: 'Manas AI',
+    faqs: [
+      {
+        question: 'What are Clawdbot skills?',
+        answer: 'Clawdbot skills are modular plugins that give your AI agent specific capabilities. Each skill connects Clawdbot to an external service or tool — like Gmail, GitHub, smart home devices, or voice synthesis. Skills are installed via ClawdHub and configured through simple markdown files. There are currently 50+ skills available, with new ones added weekly.',
+      },
+      {
+        question: 'How do I install Clawdbot skills?',
+        answer: 'Install skills using the ClawdHub CLI: "clawdhub install gmail" or "clawdhub install smart-home". Each skill includes a SKILL.md file with setup instructions, configuration options, and usage examples. Browse all available skills at clawdhub.com.',
+      },
+      {
+        question: 'What are the must-have Clawdbot skills?',
+        answer: 'The top 5 must-have skills are: Gmail (email management), Calendar (scheduling and events), GitHub (code and repository management), Browser (web automation and research), and Voice/TTS (text-to-speech via ElevenLabs). These five skills cover the core productivity needs of most users.',
+      },
+      {
+        question: 'Can I build my own Clawdbot skills?',
+        answer: 'Yes. Clawdbot skills are defined by a SKILL.md file that describes the skill\'s capabilities, configuration, and tool definitions. You can create custom skills for any API or workflow, publish them on ClawdHub for others to use, and even monetize them. The skill development documentation is available at clawdhub.com/docs.',
+      },
+      {
+        question: 'Are Clawdbot skills free?',
+        answer: 'Most Clawdbot skills are free and open-source. Some premium skills developed by third parties may have a one-time or subscription fee. The core skills (Gmail, Calendar, GitHub, Browser, Voice) are all free. External service costs (like ElevenLabs for voice) are separate from the skill itself.',
+      },
+    ],
+    content: `
+Clawdbot's power comes from its skill ecosystem — modular plugins that connect your AI agent to the real world. In 2026, there are over 50 skills available on ClawdHub, covering everything from email management to smart home control to voice synthesis. This guide covers the best skills in every category, how to install them, and how to get the most out of each one.
+
+## How Skills Work
+
+A Clawdbot skill is a self-contained plugin defined by a **SKILL.md** file. This file tells the AI:
+- What the skill can do
+- How to configure it
+- What tools are available
+- Usage examples and best practices
+
+Install any skill with one command:
+\`\`\`bash
+clawdhub install <skill-name>
+\`\`\`
+
+## Tier 1: Essential Skills (Install These First)
+
+### 📧 Gmail
+**What it does:** Read, search, compose, send, label, and archive emails. The single highest-value skill for most users.
+
+**Key capabilities:**
+- Search inbox with natural language ("emails from clients this week")
+- Draft and send responses
+- Bulk label and archive
+- Monitor for urgent messages via heartbeat
+
+**Setup:** Requires Google OAuth credentials. The skill walks you through the process.
+
+\`\`\`bash
+clawdhub install gmail
+\`\`\`
+
+### 📅 Calendar
+**What it does:** View, create, update, and delete calendar events. Check availability and schedule meetings.
+
+**Key capabilities:**
+- Natural language event creation ("Schedule lunch with Sarah next Tuesday at noon")
+- Availability checking across multiple calendars
+- Meeting conflict detection
+- Daily agenda delivery via heartbeat
+
+\`\`\`bash
+clawdhub install calendar
+\`\`\`
+
+### 🐙 GitHub
+**What it does:** Manage repositories, issues, pull requests, and notifications.
+
+**Key capabilities:**
+- Create and review pull requests
+- Manage issues and project boards
+- Monitor CI/CD pipeline status
+- Code review assistance
+
+\`\`\`bash
+clawdhub install github
+\`\`\`
+
+### 🌐 Browser
+**What it does:** Full web browser automation — navigate, click, type, screenshot, and extract data.
+
+**Key capabilities:**
+- Web research and data extraction
+- Form filling and automation
+- Screenshot capture for visual context
+- Multi-tab session management
+
+\`\`\`bash
+clawdhub install browser
+\`\`\`
+
+### 🎙️ Voice (ElevenLabs TTS)
+**What it does:** Convert text to natural-sounding speech. Transform your AI agent's responses into audio.
+
+**Key capabilities:**
+- Multiple voice options with distinct personalities
+- Story narration and content reading
+- Voice messages via Telegram or Discord
+- Audio file generation for content creation
+
+\`\`\`bash
+clawdhub install voice
+\`\`\`
+
+## Tier 2: Productivity Power-Ups
+
+### 🔍 Web Search
+Search the web using Brave Search API and get structured results. Essential for research tasks and staying current.
+
+### 📁 File Management
+Advanced file operations — search, organize, convert, and process documents. Great for keeping your workspace tidy.
+
+### 📝 Notes & Writing
+Integration with note-taking apps and writing tools. Draft documents, blog posts, and long-form content.
+
+### ⏰ Reminders & Tasks
+Set reminders, manage to-do lists, and track tasks across sessions. Works with Apple Reminders on macOS.
+
+### 🌤️ Weather
+Current conditions and forecasts. Useful for morning briefings and travel planning.
+
+## Tier 3: Smart Home & IoT
+
+### 🏠 HomeKit
+Control Apple HomeKit devices — lights, thermostats, locks, cameras, and more. Requires macOS with Home app configured.
+
+### 🏡 Home Assistant
+Connect to Home Assistant for broader smart home control. Supports thousands of device types across all ecosystems.
+
+### 📷 Camera
+Access connected cameras for snapshots and monitoring. Works with HomeKit cameras, IP cameras, and mobile devices paired through Clawdbot's node system.
+
+### 🔊 Speakers
+Control AirPlay, Sonos, and other speaker systems. Play music, set volumes, announce messages.
+
+## Tier 4: Developer Tools
+
+### 🖥️ SSH
+Remote server management through SSH connections. Execute commands, transfer files, and monitor systems on remote machines.
+
+### 🐳 Docker
+Manage Docker containers, images, and compose stacks. Deploy, monitor, and troubleshoot containerized applications.
+
+### 📊 Database
+Query and manage databases (PostgreSQL, MySQL, SQLite). Run reports, check data integrity, and perform maintenance.
+
+### 🚀 CI/CD
+Monitor and trigger deployment pipelines. Works with GitHub Actions, GitLab CI, and other CI/CD systems.
+
+## Tier 5: Business & Communication
+
+### 💬 Telegram
+The most popular messaging channel. Rich features including inline keyboards, file sharing, voice messages, and group chat support.
+
+### 💬 Discord
+Full Discord bot integration with server management, channel creation, role management, and rich embeds.
+
+### 💬 WhatsApp
+WhatsApp Business API integration for personal and business messaging.
+
+### 💬 Slack
+Workspace integration with channel management, thread replies, and slash commands.
+
+### 🐦 Twitter/X
+Post tweets, monitor mentions, engage with followers, and track trending topics.
+
+## Building Your Own Skills
+
+Creating a custom skill is straightforward:
+
+1. **Create a SKILL.md file** that describes the skill's capabilities
+2. **Define tool functions** the AI can call
+3. **Add configuration** for API keys and settings
+4. **Test locally** with your Clawdbot instance
+5. **Publish to ClawdHub** for others to use
+
+The skill format is designed to be LLM-friendly — the AI reads SKILL.md to understand what it can do, just like a human would read documentation.
+
+## Skill Stacking: Powerful Combinations
+
+The real magic happens when skills work together:
+
+- **Gmail + Calendar + Voice** = "Read my morning schedule and email summary out loud"
+- **GitHub + Browser + Telegram** = "Monitor PRs, run tests, notify me of failures on Telegram"
+- **Smart Home + Weather + Calendar** = "Turn on lights when I have an early meeting and it's still dark"
+- **Web Search + Notes + Twitter** = "Research trending topics, draft a thread, save notes for a blog post"
+
+## Recommended Skill Stack by Use Case
+
+**For Freelancers:** Gmail, Calendar, GitHub, Browser, Invoice tracking
+**For Developers:** GitHub, SSH, Docker, CI/CD, Browser
+**For Content Creators:** Voice, Twitter, Browser, Web Search, Notes
+**For Business Owners:** Gmail, Calendar, CRM, Customer Support, Reporting
+**For Smart Home Enthusiasts:** HomeKit, Home Assistant, Camera, Speakers, Weather
+
+## Conclusion
+
+The skill ecosystem is what transforms Clawdbot from a chatbot into a genuine AI agent. Start with the Tier 1 essentials — Gmail, Calendar, GitHub, Browser, and Voice — and expand based on your needs. Each skill you add multiplies the agent's usefulness, and the combinations unlock workflows that would be impossible with any single tool.
+
+Browse all available skills at [ClawdHub](https://clawdhub.com) and start building your perfect AI assistant.
+
+*Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
+    `,
+  },
+  {
+    slug: 'setup-ai-email-monitoring-auto-reply',
+    title: 'How to Set Up AI Email Monitoring and Auto-Reply with Clawdbot (2026)',
+    description: 'Step-by-step guide to building an AI-powered email monitoring and auto-reply system using Clawdbot and Gmail.',
+    metaDescription: 'Set up AI email monitoring and smart auto-reply with Clawdbot. Triage, draft, and send responses automatically using Claude AI and Gmail integration.',
+    category: 'tutorials',
+    tags: ['email', 'automation', 'gmail', 'auto-reply', 'tutorial', 'monitoring'],
+    publishDate: '2026-01-29',
+    lastModified: '2026-01-29',
+    author: 'Manas AI',
+    faqs: [
+      {
+        question: 'Can Clawdbot automatically reply to my emails?',
+        answer: 'Yes. Clawdbot can monitor your Gmail inbox, read new messages, categorize them by urgency and type, draft contextually appropriate responses, and either send them automatically or queue them for your approval. Most users start with draft-and-review mode and graduate to auto-send for routine messages once they trust the system.',
+      },
+      {
+        question: 'Is it safe to let an AI manage my email?',
+        answer: 'Yes, when configured with proper safeguards. Clawdbot runs locally so your email data stays on your machine. Start with read-only monitoring, then enable draft mode (AI writes responses, you approve before sending), and only enable auto-send for specific categories you\'re comfortable with. Set strict boundaries in SOUL.md for what the AI can and cannot do with email.',
+      },
+      {
+        question: 'How does Clawdbot decide how to respond to emails?',
+        answer: 'Clawdbot uses Claude\'s language understanding to read the email content, understand the sender\'s intent, check your conversation history and memory files for context, and generate an appropriate response in your communication style. You define response guidelines, tone, and boundaries in SOUL.md and can provide templates for common scenarios.',
+      },
+      {
+        question: 'What emails should I NOT auto-reply to?',
+        answer: 'Never auto-reply to emails involving financial transactions, legal matters, HR issues, sensitive negotiations, emotional or personal conversations, or anything where nuance and human judgment are critical. Configure these as escalation categories in your agent\'s rules so they always get flagged for your personal attention.',
+      },
+      {
+        question: 'How often does Clawdbot check for new emails?',
+        answer: 'You configure the frequency. Most users set heartbeat checks every 15-30 minutes during business hours and every 1-2 hours overnight. You can also set up cron jobs for specific check times, like "check email at 8 AM, noon, and 5 PM" for a more structured approach.',
+      },
+    ],
+    content: `
+Email is the biggest time sink in most professionals' days. The average knowledge worker spends 2.5 hours per day on email — that's 13 hours per week, 650 hours per year. What if your AI agent could handle 80% of it? This guide shows you exactly how to set up AI-powered email monitoring and smart auto-reply using Clawdbot and Gmail.
+
+## What You'll Build
+
+By the end of this guide, you'll have an AI system that:
+
+1. **Monitors** your inbox continuously (every 15-30 minutes)
+2. **Categorizes** every email by urgency and type
+3. **Drafts** responses for routine messages
+4. **Auto-sends** replies for categories you pre-approve
+5. **Escalates** important emails with a Telegram notification
+6. **Summarizes** your inbox in a daily briefing
+
+## Prerequisites
+
+- Clawdbot installed and running ([setup guide](/guides/setup-clawdbot-complete-guide))
+- Gmail skill installed (\`clawdhub install gmail\`)
+- Google OAuth credentials configured
+- Telegram channel set up for notifications
+
+## Step 1: Install and Configure the Gmail Skill
+
+\`\`\`bash
+clawdhub install gmail
+\`\`\`
+
+Follow the OAuth setup flow to grant Clawdbot access to your Gmail account. The skill needs permissions to read, compose, and send emails on your behalf.
+
+Verify the connection:
+\`\`\`
+# In your Telegram chat with Clawdbot:
+"Check my email — how many unread messages do I have?"
+\`\`\`
+
+If you get a count back, you're connected.
+
+## Step 2: Define Your Email Categories
+
+Create a file called **EMAIL-RULES.md** in your Clawdbot workspace:
+
+\`\`\`markdown
+# Email Handling Rules
+
+## Categories
+
+### 🔴 URGENT — Notify immediately via Telegram
+- Emails from: [list VIP contacts]
+- Keywords: "urgent", "ASAP", "emergency", "deadline today"
+- Client emails about active projects
+
+### 🟡 NEEDS RESPONSE — Draft reply for my review
+- Client inquiries and questions
+- Meeting requests and scheduling
+- Business proposals
+- Any email that asks a direct question
+
+### 🟢 AUTO-REPLY — Send response automatically
+- Meeting confirmations ("Thanks, confirmed!")
+- Newsletter subscription confirmations
+- Automated receipts and invoices (archive, no reply)
+- Out-of-office acknowledgments
+
+### ⚪ FYI — Archive silently
+- Marketing emails and promotions
+- Automated notifications I don't need to act on
+- CC'd emails where I'm not the primary recipient
+- Internal system alerts (unless error/failure)
+
+## Response Guidelines
+- Use my name in the signature
+- Professional but warm tone
+- Keep responses concise
+- Never commit to deadlines without checking with me
+- Never discuss pricing or contracts without my approval
+\`\`\`
+
+## Step 3: Configure the Monitoring Heartbeat
+
+Add email monitoring to your **HEARTBEAT.md**:
+
+\`\`\`markdown
+## Email Monitoring
+- Check Gmail inbox for new messages since last check
+- Apply EMAIL-RULES.md categories to each message
+- For URGENT: send me a Telegram alert with sender, subject, and summary
+- For NEEDS RESPONSE: draft a reply and save it (don't send)
+- For AUTO-REPLY: send the response (approved categories only)
+- For FYI: archive the message
+- Log all actions to memory/email-log.md
+\`\`\`
+
+Set your heartbeat interval to check every 15-30 minutes:
+\`\`\`yaml
+heartbeat:
+  interval: 900  # 15 minutes
+\`\`\`
+
+## Step 4: Set Up the Morning Email Briefing
+
+Add a cron job for a daily email summary:
+
+\`\`\`yaml
+cron:
+  - schedule: "0 7 * * 1-5"  # 7 AM weekdays
+    task: |
+      Generate my morning email briefing:
+      - Total unread: count
+      - Urgent items: list with summaries
+      - Pending drafts: list what you've drafted for my review
+      - Action needed: emails requiring my personal response
+      - FYI digest: one-line summaries of informational emails
+      Deliver via Telegram.
+\`\`\`
+
+## Step 5: Train Your Agent on Your Writing Style
+
+The best auto-replies sound like you wrote them. Help your AI learn your style:
+
+### Option A: Provide Examples
+Add to SOUL.md:
+\`\`\`markdown
+## My Email Style
+- I start emails with "Hey [Name]," (informal) or "Hi [Name]," (formal)
+- I keep paragraphs to 2-3 sentences max
+- I use em dashes and occasional parentheticals
+- I sign off with "Best," or "Thanks," followed by my first name
+- I'm direct but friendly — no corporate fluff
+\`\`\`
+
+### Option B: Let It Learn
+Tell your agent: "Read my last 20 sent emails and learn my writing style. Summarize the patterns you notice and save them to SOUL.md."
+
+## Step 6: Set Up the Review Workflow
+
+For emails in the NEEDS RESPONSE category, you want a smooth review process:
+
+1. Agent drafts the reply
+2. Agent sends you the draft via Telegram: "📧 Draft reply to [Sender] re: [Subject] — [draft text]. Send, edit, or skip?"
+3. You reply:
+   - **"Send"** — agent sends the draft as-is
+   - **"Edit: [your changes]"** — agent modifies and sends
+   - **"Skip"** — you'll handle it manually
+
+This gives you final approval while saving 90% of the effort.
+
+## Step 7: Gradual Trust Escalation
+
+Start conservative and expand automation as you build confidence:
+
+**Week 1: Monitor Only**
+- Agent reads and categorizes emails
+- All responses are drafts for your review
+- Daily briefing via Telegram
+
+**Week 2: Auto-Reply for Safe Categories**
+- Enable auto-send for meeting confirmations and simple acknowledgments
+- Continue drafting for everything else
+
+**Week 3: Expand Auto-Reply**
+- Add FAQ-style customer responses to auto-send
+- Enable auto-archiving of FYI emails
+
+**Week 4: Full Operation**
+- Auto-reply handles 60-80% of routine email
+- You personally handle only complex, sensitive, or high-value messages
+- Review weekly logs to fine-tune categories
+
+## Advanced: Multi-Account Email Management
+
+If you manage multiple email accounts (personal, business, side project), configure each one:
+
+\`\`\`markdown
+## Account: work@company.com
+- Check every 15 minutes during business hours
+- Strict professional tone
+- Always draft, never auto-send
+
+## Account: personal@gmail.com
+- Check every hour
+- Casual tone
+- Auto-reply to known contacts
+
+## Account: support@mybusiness.com
+- Check every 30 minutes
+- Use support templates
+- Auto-reply for common questions
+\`\`\`
+
+## Measuring Impact
+
+After one month, check your metrics:
+
+- **Time saved:** Track how many emails the agent handled vs. you
+- **Response time:** Average time from receipt to reply (should drop dramatically)
+- **Quality:** Review a random sample of auto-sent replies for accuracy
+- **Misses:** Any emails that should have been escalated but weren't?
+
+Most users report saving **5-10 hours per week** on email management within the first month.
+
+## Common Issues and Fixes
+
+**Agent sends too many Telegram alerts:**
+Tighten your URGENT criteria. Most emails aren't actually urgent.
+
+**Drafts don't sound like me:**
+Provide more writing examples. The agent learns from explicit style guidance.
+
+**Important emails getting auto-archived:**
+Review your FYI rules. Add exceptions for specific senders or keywords.
+
+**Agent keeps asking for clarification:**
+Add more context to EMAIL-RULES.md. The more specific your rules, the more autonomous the agent becomes.
+
+## Conclusion
+
+AI email monitoring and auto-reply is the single highest-ROI automation you can build with Clawdbot. It saves hours per week, ensures faster response times, and frees you to focus on work that actually requires human judgment. Start with monitoring, graduate to drafts, and eventually trust the system with auto-replies for routine messages. Your inbox will never be the same.
+
+*Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
+    `,
+  },
 ];
 
 export function getGuideBySlug(slug: string): Guide | undefined {
