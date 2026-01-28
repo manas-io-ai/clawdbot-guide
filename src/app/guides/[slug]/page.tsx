@@ -119,11 +119,12 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
 
       {/* CTA */}
       <div className="bg-card border border-accent/20 rounded-xl p-8 mt-10 text-center">
-        <h3 className="text-xl font-bold text-white mb-2">Need Expert Help?</h3>
-        <p className="text-gray-400 mb-4">Professional Clawdbot setup and configuration — done for you.</p>
-        <a href="mailto:io@manasexp.com" className="bg-accent text-bg font-semibold px-6 py-2 rounded-lg hover:bg-accent-dim transition inline-block">
-          Get Setup Help — $299 →
+        <h3 className="text-xl font-bold text-white mb-2">Skip the DIY — Get a Fully Managed AI Employee</h3>
+        <p className="text-gray-400 mb-4">We handle setup, configuration, and ongoing management so your AI assistant runs 24/7 without you lifting a finger.</p>
+        <a href="https://clawd-agency.vercel.app" className="bg-accent text-bg font-semibold px-6 py-2 rounded-lg hover:bg-accent-dim transition inline-block">
+          Deploy Your AI Assistant →
         </a>
+        <p className="text-xs text-gray-600 mt-3">$5K setup + $500/mo · Done-for-you</p>
       </div>
 
       {/* Related Guides */}

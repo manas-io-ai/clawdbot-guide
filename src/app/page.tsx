@@ -95,12 +95,12 @@ export default function Home() {
       {/* CTA */}
       <section className="max-w-4xl mx-auto px-4 py-16">
         <div className="bg-card border border-accent/20 rounded-2xl p-10 text-center card-glow">
-          <h2 className="text-2xl font-bold text-white mb-4">Need Help Setting Up Clawdbot?</h2>
-          <p className="text-gray-400 mb-6">We offer professional setup services — get your AI assistant running in under an hour.</p>
-          <a href="mailto:io@manasexp.com" className="bg-accent text-bg font-semibold px-8 py-3 rounded-lg hover:bg-accent-dim transition inline-block">
-            Get Setup Help — $299 →
+          <h2 className="text-2xl font-bold text-white mb-4">Get Your Own AI Employee</h2>
+          <p className="text-gray-400 mb-6">We deploy always-on AI assistants that handle email, scheduling, customer support, and automation — so you can focus on what matters.</p>
+          <a href="https://clawd-agency.vercel.app" className="bg-accent text-bg font-semibold px-8 py-3 rounded-lg hover:bg-accent-dim transition inline-block">
+            Deploy Your AI Assistant →
           </a>
-          <p className="text-xs text-gray-600 mt-3">Full setup, configuration, and training included</p>
+          <p className="text-xs text-gray-600 mt-3">$5K setup + $500/mo · Fully managed · Always on</p>
         </div>
       </section>
 

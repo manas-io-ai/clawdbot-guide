@@ -120,7 +120,15 @@ Clawdbot/Moltbot was created by **Peter Steinberger (@steipete)**, a well-known 
 - A **messaging app** account (Telegram is easiest to set up)
 - ~30 minutes for initial setup
 
-Ready to get started? Check out our [Complete Setup Guide](/guides/setup-clawdbot-complete-guide).
+Ready to get started? Check out our [Complete Setup Guide](/guides/setup-clawdbot-complete-guide). Want to know how it compares to ChatGPT? Read our [Clawdbot vs ChatGPT comparison](/guides/clawdbot-vs-chatgpt-comparison). Already set up? Explore the [best skills and plugins](/guides/best-ai-agent-skills-plugins-2026) to supercharge your agent.
+
+## Don't Want to Set It Up Yourself?
+
+Setting up Clawdbot is powerful but takes time and technical know-how. If you'd rather have a fully managed AI employee deployed and running in days — not weeks — the [Clawd VA Agency](https://clawd-agency.vercel.app) handles everything: setup, configuration, skill installation, ongoing management, and support.
+
+**$5K setup + $500/mo** — your always-on AI assistant, fully managed.
+
+[→ Book a Setup Call](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
@@ -271,9 +279,19 @@ Claude Max gives generous limits but they exist. If you hit them, the gateway wi
 
 ## Next Steps
 
-- **[Complete Skills Guide](/skills)** — browse all available integrations
+- **[Complete Skills Guide](/guides/best-ai-agent-skills-plugins-2026)** — browse all available integrations
 - **[Security Best Practices](/guides/clawdbot-security-best-practices)** — secure your setup
 - **[Advanced Configuration](/guides/clawdbot-advanced-configuration)** — customize everything
+- **[Mac Mini Server Setup](/guides/clawdbot-mac-mini-setup)** — turn a Mac mini into a 24/7 AI server
+- **[Automate Your Business](/guides/automate-business-with-claude-code)** — AI-powered business automation
+
+## Want It Done For You?
+
+Don't want to spend 30 minutes on setup and hours on configuration? The [Clawd VA Agency](https://clawd-agency.vercel.app) deploys a fully managed AI employee for you — installed, configured, trained, and maintained.
+
+**$5K setup + $500/mo** — we handle everything so you don't have to.
+
+[→ Get Your AI Employee](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
@@ -363,7 +381,7 @@ clawdbot gateway logs
 npm update -g clawdbot
 \`\`\`
 
-Security patches are released regularly. Stay current.
+Security patches are released regularly. Stay current. For a comprehensive overview of Clawdbot's capabilities, see [What is Clawdbot?](/guides/what-is-clawdbot-moltbot). For setup instructions, follow the [Complete Setup Guide](/guides/setup-clawdbot-complete-guide).
 
 ## Network Security
 
@@ -377,6 +395,14 @@ Remember: Clawdbot sends your messages to LLM providers (Anthropic, OpenAI, etc.
 - Don't share extremely sensitive data (SSNs, passwords, etc.) in chat
 - Consider what tools and files Clawdbot has access to
 - Review and clean memory files periodically
+
+## Want a Security-Hardened Setup Without the Hassle?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) deploys fully managed AI assistants with security best practices baked in — proper access control, key management, and monitoring from day one.
+
+**$5K setup + $500/mo** — secure, managed, always on.
+
+[→ Deploy Your AI Assistant](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
@@ -498,6 +524,16 @@ Extend Clawdbot with custom shell scripts and tools:
 - Configure thinking levels appropriately (low for simple, high for complex)
 - Use sub-agents for parallel work
 
+For hardware recommendations, see our [Mac Mini AI Server Setup](/guides/clawdbot-mac-mini-setup) guide. To learn about building a fully autonomous agent, check out [How to Build an AI Agent That Works 24/7](/guides/build-ai-agent-that-works-24-7). Make sure to also review [Security Best Practices](/guides/clawdbot-security-best-practices).
+
+## Too Complex? Let Us Handle It
+
+Advanced configuration is powerful — but it's a lot of work. The [Clawd VA Agency](https://clawd-agency.vercel.app) handles multi-agent setups, custom automations, cron jobs, and ongoing optimization for you.
+
+**$5K setup + $500/mo** — expert configuration, fully managed.
+
+[→ Get Your AI Employee](https://clawd-agency.vercel.app)
+
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
   },
@@ -568,6 +604,16 @@ ChatGPT is a **conversation tool**. Clawdbot is an **agent platform**.
 ChatGPT answers questions. Clawdbot takes actions. It reads your email and drafts responses. It checks your calendar and warns you about conflicts. It monitors your code deployments and alerts you to failures. It controls your lights when you say "goodnight."
 
 The gap isn't intelligence — they use similar models. The gap is **agency**. Clawdbot has hands.
+
+Ready to make the switch? Start with our [Complete Setup Guide](/guides/setup-clawdbot-complete-guide), or learn about the [best skills and plugins](/guides/best-ai-agent-skills-plugins-2026) available. See also: [Clawdbot vs AutoGPT vs BabyAGI](/guides/clawdbot-vs-autogpt-vs-babyagi) for a deeper framework comparison.
+
+## Ready to Upgrade from ChatGPT?
+
+Skip the DIY setup. The [Clawd VA Agency](https://clawd-agency.vercel.app) deploys a fully managed AI employee that does everything ChatGPT can't — email, scheduling, automation, and more — running 24/7.
+
+**$5K setup + $500/mo** — your always-on AI assistant.
+
+[→ Deploy Your AI Employee](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
@@ -699,6 +745,16 @@ Build SaaS products powered by Clawdbot:
 5. **Automate your own marketing** — use Clawdbot to find and reach clients
 
 The AI agent market is nascent. Early movers who establish expertise now will dominate as the space grows.
+
+New to Clawdbot? Start with [What is Clawdbot?](/guides/what-is-clawdbot-moltbot) and the [Complete Setup Guide](/guides/setup-clawdbot-complete-guide). For business automation ideas, check out [How to Automate Your Business with Claude Code](/guides/automate-business-with-claude-code).
+
+## Want to Offer AI Employees to Your Clients?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) is already doing this at scale. If you want a fully managed AI assistant for yourself or your business — or want to partner with us to offer AI employees to your clients — get in touch.
+
+**$5K setup + $500/mo per AI employee** — fully deployed and managed.
+
+[→ Learn More at Clawd Agency](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
@@ -839,6 +895,16 @@ clawdbot gateway status
 | **Total** | **~$135/mo** |
 
 For a 24/7 AI assistant that manages your email, calendar, smart home, code, and more — that's a bargain.
+
+Once your Mac mini is ready, follow the [Complete Setup Guide](/guides/setup-clawdbot-complete-guide) to install Clawdbot. Then check out [How to Build an AI Agent That Works 24/7](/guides/build-ai-agent-that-works-24-7) and [Advanced Configuration](/guides/clawdbot-advanced-configuration) to get the most out of your setup. Don't forget [Security Best Practices](/guides/clawdbot-security-best-practices).
+
+## Don't Want to Build Your Own Server?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) handles hardware, software, configuration, and ongoing management. We deploy your AI employee on dedicated infrastructure — you just use it.
+
+**$5K setup + $500/mo** — no hardware to buy, no config to manage.
+
+[→ Get Your AI Employee](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 27, 2026 · Last updated January 28, 2026*
     `,
@@ -1007,6 +1073,16 @@ Here are workflows that real Clawdbot users have deployed:
 
 Building a 24/7 AI agent isn't science fiction — it's a weekend project. With Clawdbot, a Mac mini, and Claude Max, you can deploy an always-on assistant that handles the tedious parts of your life while you focus on what matters. Start small, iterate fast, and let the agent earn your trust.
 
+For hardware recommendations, see our [Mac Mini AI Server Setup](/guides/clawdbot-mac-mini-setup). For business use cases, read [How to Automate Your Business](/guides/automate-business-with-claude-code). Browse [all available skills](/guides/best-ai-agent-skills-plugins-2026) to expand your agent's capabilities.
+
+## Want a 24/7 AI Agent Without the Weekend Project?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) deploys fully managed AI employees that work around the clock. We handle the architecture, deployment, monitoring, and maintenance — you just reap the benefits.
+
+**$5K setup + $500/mo** — your always-on AI assistant, deployed and managed.
+
+[→ Deploy Your AI Employee](https://clawd-agency.vercel.app)
+
 *Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
     `,
   },
@@ -1138,6 +1214,16 @@ By 2026, that pragmatic approach won. Clawdbot has tens of thousands of active u
 ## Conclusion
 
 If you want an AI agent that actually improves your daily life — one you can message from your phone, that checks your email, manages your calendar, and runs 24/7 without babysitting — **Clawdbot is the clear winner in 2026.** AutoGPT is a powerful tool for specific research needs, and BabyAGI is a great learning resource, but neither matches Clawdbot's combination of reliability, integrations, and everyday usefulness.
+
+Ready to try Clawdbot? Start with [What is Clawdbot?](/guides/what-is-clawdbot-moltbot) or jump straight to the [Setup Guide](/guides/setup-clawdbot-complete-guide). Also see: [Clawdbot vs ChatGPT](/guides/clawdbot-vs-chatgpt-comparison) and [How to Build a 24/7 AI Agent](/guides/build-ai-agent-that-works-24-7).
+
+## Skip the Comparison — Get a Managed AI Employee
+
+Why configure and manage your own agent when the [Clawd VA Agency](https://clawd-agency.vercel.app) can deploy one for you? We build, deploy, and manage always-on AI assistants for businesses and individuals.
+
+**$5K setup + $500/mo** — no framework debates, just results.
+
+[→ Get Your AI Employee](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
     `,
@@ -1339,6 +1425,16 @@ Cost: $135/month. ROI: 20-40x in the first month.
 ## Conclusion
 
 The era of AI-powered business automation is here, and it's accessible to everyone — not just enterprises with six-figure software budgets. With Clawdbot, Claude Code, and a $135/month investment, you can build an AI-powered business operation that rivals companies ten times your size. Start with email. Expand from there. The leverage is extraordinary.
+
+For email-specific automation, see our detailed [AI Email Monitoring and Auto-Reply Guide](/guides/setup-ai-email-monitoring-auto-reply). Check out the [best skills and plugins](/guides/best-ai-agent-skills-plugins-2026) to build your automation stack, and review [Security Best Practices](/guides/clawdbot-security-best-practices) before going live.
+
+## Want Business Automation Without the DIY?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) specializes in deploying AI employees for businesses. We set up email automation, customer support, reporting, and custom workflows — then manage everything ongoing.
+
+**$5K setup + $500/mo** — ROI from month one.
+
+[→ Automate Your Business](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
     `,
@@ -1556,6 +1652,16 @@ The real magic happens when skills work together:
 The skill ecosystem is what transforms Clawdbot from a chatbot into a genuine AI agent. Start with the Tier 1 essentials — Gmail, Calendar, GitHub, Browser, and Voice — and expand based on your needs. Each skill you add multiplies the agent's usefulness, and the combinations unlock workflows that would be impossible with any single tool.
 
 Browse all available skills at [ClawdHub](https://clawdhub.com) and start building your perfect AI assistant.
+
+New to Clawdbot? Start with [What is Clawdbot?](/guides/what-is-clawdbot-moltbot). For installation, follow the [Complete Setup Guide](/guides/setup-clawdbot-complete-guide). For a deep dive on email automation specifically, see our [AI Email Monitoring Guide](/guides/setup-ai-email-monitoring-auto-reply). To learn about business use cases, check out [Automate Your Business](/guides/automate-business-with-claude-code).
+
+## Want All These Skills Set Up and Managed For You?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) deploys AI employees pre-configured with the skills your business needs — email, calendar, customer support, automation, and more. No skill installation, no configuration headaches.
+
+**$5K setup + $500/mo** — fully loaded, fully managed.
+
+[→ Get Your AI Employee](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
     `,
@@ -1809,6 +1915,16 @@ Add more context to EMAIL-RULES.md. The more specific your rules, the more auton
 ## Conclusion
 
 AI email monitoring and auto-reply is the single highest-ROI automation you can build with Clawdbot. It saves hours per week, ensures faster response times, and frees you to focus on work that actually requires human judgment. Start with monitoring, graduate to drafts, and eventually trust the system with auto-replies for routine messages. Your inbox will never be the same.
+
+For more automation ideas, see [How to Automate Your Business](/guides/automate-business-with-claude-code). Learn about all available integrations in our [Skills and Plugins Guide](/guides/best-ai-agent-skills-plugins-2026). For advanced scheduling and automation, check out [Advanced Configuration](/guides/clawdbot-advanced-configuration).
+
+## Want AI Email Management Without the Setup?
+
+The [Clawd VA Agency](https://clawd-agency.vercel.app) deploys fully managed AI assistants with email monitoring, auto-triage, and smart response drafting built in. We configure everything — you just approve and send.
+
+**$5K setup + $500/mo** — email on autopilot, day one.
+
+[→ Get Your AI Employee](https://clawd-agency.vercel.app)
 
 *Written by [Manas AI](https://manasexp.com) · Published January 29, 2026 · Last updated January 29, 2026*
     `,

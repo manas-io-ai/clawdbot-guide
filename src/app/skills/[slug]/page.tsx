@@ -86,11 +86,12 @@ export default function SkillPage({ params }: { params: { slug: string } }) {
 
       {/* CTA */}
       <div className="bg-card border border-accent/20 rounded-xl p-8 mt-10 text-center">
-        <h3 className="text-xl font-bold text-white mb-2">Need Help Setting Up {skill.name}?</h3>
-        <p className="text-gray-400 mb-4">Professional Clawdbot setup including {skill.name} configuration.</p>
-        <a href="mailto:io@manasexp.com" className="bg-accent text-bg font-semibold px-6 py-2 rounded-lg hover:bg-accent-dim transition inline-block">
-          Get Setup Help — $299 →
+        <h3 className="text-xl font-bold text-white mb-2">Want {skill.name} Set Up and Managed For You?</h3>
+        <p className="text-gray-400 mb-4">We deploy fully managed AI assistants with {skill.name} and 50+ other skills — always on, always working.</p>
+        <a href="https://clawd-agency.vercel.app" className="bg-accent text-bg font-semibold px-6 py-2 rounded-lg hover:bg-accent-dim transition inline-block">
+          Get Your AI Employee →
         </a>
+        <p className="text-xs text-gray-600 mt-3">$5K setup + $500/mo · Fully managed</p>
       </div>
 
       {/* Related Skills */}

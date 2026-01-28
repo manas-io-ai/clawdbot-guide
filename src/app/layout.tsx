@@ -50,7 +50,7 @@ function Nav() {
         <div className="flex gap-6 text-sm">
           <a href="/guides" className="text-gray-400 hover:text-accent transition">Guides</a>
           <a href="/skills" className="text-gray-400 hover:text-accent transition">Skills</a>
-          <a href="/guides/setup-clawdbot-complete-guide" className="bg-accent/10 text-accent px-3 py-1 rounded-full hover:bg-accent/20 transition">Get Started</a>
+          <a href="https://clawd-agency.vercel.app" className="bg-accent/10 text-accent px-3 py-1 rounded-full hover:bg-accent/20 transition">Get Your AI Employee →</a>
         </div>
       </div>
     </nav>
@@ -78,12 +78,12 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-gray-300 mb-3">Official Links</h4>
+            <h4 className="font-semibold text-gray-300 mb-3">Services</h4>
             <ul className="space-y-2 text-sm">
+              <li><a href="https://clawd-agency.vercel.app" className="text-accent hover:underline font-semibold">Get Your AI Employee →</a></li>
               <li><a href="https://clawd.bot" className="text-gray-500 hover:text-accent">clawd.bot ↗</a></li>
               <li><a href="https://docs.clawd.bot" className="text-gray-500 hover:text-accent">Documentation ↗</a></li>
               <li><a href="https://clawdhub.com" className="text-gray-500 hover:text-accent">ClawdHub Skills ↗</a></li>
-              <li><a href="https://discord.com/invite/clawd" className="text-gray-500 hover:text-accent">Discord Community ↗</a></li>
             </ul>
           </div>
         </div>
